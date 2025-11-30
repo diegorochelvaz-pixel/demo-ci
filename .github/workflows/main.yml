@@ -1,0 +1,22 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código do repositório
+        uses: actions/checkout@v4
+
+      - name: Validar index.html
+        run: echo "Rodando build simples..." && ls -l
+
+      - name: Fazer upload do artefato
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: index.html
